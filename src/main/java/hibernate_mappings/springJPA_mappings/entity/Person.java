@@ -2,15 +2,13 @@ package hibernate_mappings.springJPA_mappings.entity;
 
 import com.fasterxml.jackson.databind.SerializationFeature;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Entity
 @Table(name = "PERSON")
-@Data
-@NoArgsConstructor
+
+@Getter
+@Setter
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

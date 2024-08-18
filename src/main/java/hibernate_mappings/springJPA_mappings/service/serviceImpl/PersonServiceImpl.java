@@ -11,6 +11,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PersonServiceImpl implements PersonService {
 
@@ -34,12 +36,21 @@ public class PersonServiceImpl implements PersonService {
     @Override
     @Transactional
     public PersonResponse getById(Integer personId) {
+        //to find all persons whose state is Andhra Pradesh
+        List<Person> personList = personRepo.findAllByState("Andhra Pradesh");
+        //similarly you can find all persons based on non owning entity.
+        //here owing entity is person because it has passport pk in its table columns
+        //to find all persons based on passortNumber
+        List<Person> personByPassportNum = personRepo.findByPassportPassportNum("Z5466312");
+        //to know whether entity with that columnData or not. here we are doing for Id, similarly we can do for other columns also
+        boolean exists = personRepo.existsById(1);
         Person person =  personRepo.findById(personId).get();
         PersonResponse personResponse = new PersonResponse();
         personResponse.setPersonId(person.getPersonId());
         personResponse.setPersonName(person.getPersonName());
         personResponse.setPhoneNumber(person.getPhoneNumber());
         personResponse.setState(person.getState());
+
         Passport passport = person.getPassport();
         PassportResponse passportResponse = new PassportResponse();
         passportResponse.setPassportId(passport.getPId());

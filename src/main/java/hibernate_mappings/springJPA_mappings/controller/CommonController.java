@@ -4,10 +4,8 @@ package hibernate_mappings.springJPA_mappings.controller;
 import hibernate_mappings.springJPA_mappings.entity.Person;
 import hibernate_mappings.springJPA_mappings.model.PersonRequest;
 import hibernate_mappings.springJPA_mappings.model.PersonResponse;
-import hibernate_mappings.springJPA_mappings.repository.PersonRepo;
 import hibernate_mappings.springJPA_mappings.service.serviceImpl.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
